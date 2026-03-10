@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #334155 transparent;
+  }
+  *::-webkit-scrollbar { width: 5px; height: 5px; }
+  *::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+  html { font-size: 14px; }
+  body {
+    background:
+      radial-gradient(circle at 15% 5%, rgba(99, 102, 241, 0.2), transparent 28%),
+      radial-gradient(circle at 90% 85%, rgba(14, 165, 233, 0.14), transparent 32%),
+      #020617;
+    color: #f1f5f9;
+    font-family: 'SF Pro Display', 'Inter', 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  #root { height: 100vh; overflow: hidden; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(100px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.anim-fade-up { animation: fadeInUp 0.25s ease forwards; }
+.anim-fade    { animation: fadeIn 0.2s ease forwards; }
+.toast-in     { animation: toastIn 0.3s ease forwards; }
+.dot-pulse    { animation: pulse 2s ease-in-out infinite; }
+
+.spinner {
+  display: inline-block;
+  width: 14px; height: 14px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.65s linear infinite;
+  flex-shrink: 0;
+}
