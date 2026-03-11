@@ -213,6 +213,19 @@ export interface RiskSignal {
   recommendation: string
 }
 
+export interface FinancialMetrics {
+  revenue_cr?: number | null
+  net_profit_cr?: number | null
+  total_debt_cr?: number | null
+  total_assets_cr?: number | null
+  equity_cr?: number | null
+  interest_expense_cr?: number | null
+  operating_cash_flow_cr?: number | null
+  current_assets_cr?: number | null
+  current_liabilities_cr?: number | null
+  data_quality?: string
+}
+
 export interface ResearchResult {
   company_name: string
   risk_scores?: RiskScores
@@ -224,6 +237,7 @@ export interface ResearchResult {
   industry_analysis?: IndustryAnalysis
   promoter_network?: NetworkEntity[]
   risk_signals?: RiskSignal[]
+  financial_metrics?: FinancialMetrics
   alerts?: string[]
 }
 
@@ -281,6 +295,7 @@ export interface Module3ScoreData {
   explanation: string[]
   contribution_breakdown: Record<string, number>
   explainable_score_impact: Module3FactorImpact[]
+  intermediate_metrics?: Record<string, Record<string, number | null>>
 }
 
 export interface Module3ScoreResponse {

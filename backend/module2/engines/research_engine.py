@@ -108,6 +108,18 @@ JSON_TEMPLATE = """{
       "recommendation": "what action should be taken"
     }
   ],
+  "financial_metrics": {
+    "revenue_cr": null,
+    "net_profit_cr": null,
+    "total_debt_cr": null,
+    "total_assets_cr": null,
+    "equity_cr": null,
+    "interest_expense_cr": null,
+    "operating_cash_flow_cr": null,
+    "current_assets_cr": null,
+    "current_liabilities_cr": null,
+    "data_quality": "estimated"
+  },
   "risk_scores": {
     "news_risk": 0,
     "legal_risk": 0,
@@ -313,6 +325,7 @@ You MUST cover ALL of the following areas comprehensively:
 6. PROMOTER NETWORK — Map ALL connections between promoters/directors and other entities (generate exactly 5-6 connections including at least one flagged entity)
 7. RISK SIGNALS — Specific red flags across categories: fraud, governance, financial, legal, operational, market (generate exactly 4-6 signals)
 8. RISK SCORES — Numerical scores 0-100 for each category (0=no risk, 100=extreme risk). The overall_external_risk should be a weighted average.
+9. FINANCIAL METRICS — Best-estimate numeric financials in Crores (₹ Cr). If the financial_context above has explicit numbers, parse and use those directly. Otherwise estimate based on company size and industry. Set all numeric fields you cannot estimate to null.
 
 IMPORTANT GUIDELINES:
 • If this is a real, well-known company, use accurate factual information

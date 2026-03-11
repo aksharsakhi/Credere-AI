@@ -25,6 +25,7 @@ from ..models.research_data import (
     RiskSignal,
     RiskScores,
     RiskSummary,
+    FinancialMetrics,
 )
 
 logger = logging.getLogger(__name__)
@@ -224,6 +225,27 @@ class ResearchService:
                     rsum.get("operational_risk_level", "Low")
                 ),
                 overall_assessment=str(rsum.get("overall_assessment", "")),
+            )
+
+        # Financial Metrics
+        fm = raw.get("financial_metrics", {})
+        if fm:
+            def _opt_float(v):
+                try:
+                    return float(v) if v is not None else None
+                except (ValueError, TypeError):
+                    return None
+            result.financial_metrics = FinancialMetrics(
+                revenue_cr=_opt_float(fm.get("revenue_cr")),
+                net_profit_cr=_opt_float(fm.get("net_profit_cr")),
+                total_debt_cr=_opt_float(fm.get("total_debt_cr")),
+                total_assets_cr=_opt_float(fm.get("total_assets_cr")),
+                equity_cr=_opt_float(fm.get("equity_cr")),
+                interest_expense_cr=_opt_float(fm.get("interest_expense_cr")),
+                operating_cash_flow_cr=_opt_float(fm.get("operating_cash_flow_cr")),
+                current_assets_cr=_opt_float(fm.get("current_assets_cr")),
+                current_liabilities_cr=_opt_float(fm.get("current_liabilities_cr")),
+                data_quality=str(fm.get("data_quality", "estimated")),
             )
 
         # Generate alerts from high-severity risk signals + litigation

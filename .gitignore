@@ -25,3 +25,7 @@ frontend/dist/
 
 # Logs
 *.log
+
+# Runtime uploads
+backend/module1/uploads/
+backend/module2/uploads/

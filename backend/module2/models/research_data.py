@@ -117,6 +117,20 @@ class RiskSignal(BaseModel):
     recommendation: str = ""
 
 
+class FinancialMetrics(BaseModel):
+    """Estimated financial metrics extracted by the research engine."""
+    revenue_cr: Optional[float] = None
+    net_profit_cr: Optional[float] = None
+    total_debt_cr: Optional[float] = None
+    total_assets_cr: Optional[float] = None
+    equity_cr: Optional[float] = None
+    interest_expense_cr: Optional[float] = None
+    operating_cash_flow_cr: Optional[float] = None
+    current_assets_cr: Optional[float] = None
+    current_liabilities_cr: Optional[float] = None
+    data_quality: str = "estimated"
+
+
 class RiskScores(BaseModel):
     news_risk: int = 0
     legal_risk: int = 0
@@ -151,6 +165,7 @@ class ResearchResult(BaseModel):
     risk_signals: List[RiskSignal] = []
     risk_scores: Optional[RiskScores] = None
     risk_summary: Optional[RiskSummary] = None
+    financial_metrics: Optional[FinancialMetrics] = None
     alerts: List[str] = []
     research_timestamp: str = ""
 
