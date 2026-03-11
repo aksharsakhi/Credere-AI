@@ -242,9 +242,15 @@ class ResearchService:
                 total_assets_cr=_opt_float(fm.get("total_assets_cr")),
                 equity_cr=_opt_float(fm.get("equity_cr")),
                 interest_expense_cr=_opt_float(fm.get("interest_expense_cr")),
-                operating_cash_flow_cr=_opt_float(fm.get("operating_cash_flow_cr")),
-                current_assets_cr=_opt_float(fm.get("current_assets_cr")),
-                current_liabilities_cr=_opt_float(fm.get("current_liabilities_cr")),
+                operating_cash_flow_cr=_opt_float(
+                    fm.get("operating_cash_flow_cr")
+                ),
+                current_assets_cr=_opt_float(
+                    fm.get("current_assets_cr")
+                ),
+                current_liabilities_cr=_opt_float(
+                    fm.get("current_liabilities_cr")
+                ),
                 data_quality=str(fm.get("data_quality", "estimated")),
             )
 
