@@ -45,7 +45,7 @@ async def run_research(inp: ResearchInput):
         )
 
     try:
-        result = await research_service.run_research(inp)
+        result = await research_service.run_research(inp.company_name)
         return ResearchResponse(
             success=True,
             message=f"Research completed for {inp.company_name}",
@@ -107,9 +107,7 @@ async def search_company_online(inp: CompanySearchRequest):
         raise HTTPException(status_code=400, detail="company_name is required")
 
     try:
-        data = await research_service.search_company_online(
-            inp.company_name.strip()
-        )
+        data = await research_service.search_company_online(inp.company_name.strip())
         return {
             "success": True,
             "message": (
